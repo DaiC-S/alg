@@ -11,25 +11,25 @@
 
 # それでは、1000000以下の整数のうち、一桁の数に到達するのに必要な「操作」の回数が5回となるものはいくつあるかを、求めてください。
 
-def product_of_digits(number)
-  number.to_s.chars.map(&:to_i).reduce(:*)
+def times(t)
+  t.to_s.chars.map(&:to_i).reduce(:*)
 end
 
-def count_operations_to_single_digit(number)
+def fun(m)
   count = 0
-  while number >= 10
-    number = product_of_digits(number)
-    count += 1
+  while m >= 10
+   m = times(m)
+   count += 1
   end
   count
 end
 
-def count_numbers_with_five_operations
+def res
   count = 0
-  (1..1000000).each do |num|
-    count += 1 if count_operations_to_single_digit(num) == 5
+  (1..1000000).each do |n|
+    count += 1 if fun(n) == 5
   end
   count
 end
 
-puts count_numbers_with_five_operations
+puts res
